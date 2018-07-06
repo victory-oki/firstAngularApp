@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <div class="wrapper">
+          <h1 style="text-align: center">
+            TO-DO LIST
+          </h1>
+          <div id="container">
+          
+            <ol id="list">
+              
+              <li *ngFor="let entry of entries" #li [id]="entry" ><input type="checkbox" ngModel name="{{entry}}" class="form-control" #check="ngModel" [id]="entry" (click)="changeColor(check)" class="col-md-1"/><p style="display: inline;color: rgb(255, 0, 0)">{{entry}}</p>
+                <span style="color: rgb(255, 0, 0);font-size: 20px" class="col-md-11"><i style="cursor: pointer;text-decoration:none;font-size:15px;font-weight: bold"class="material-icons" #remove  [id]="entry" (click)="removeEntry(remove.id)">remove_circle_outline</i></span>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <input (keyup.enter)="addNewEntry()" [(ngModel)]="entry" class="form-control" type="text" style="max-width:1000px;margin: auto" placeholder="Add new entry and press enter or add replacement and click replace"/><br>
+            <div class="btn-group"style=";left:50%;margin-left:-110px">
+                <button class="btn btn-success" (click)="popUpBox()"  >REPLACE</button>
+                <button class="btn btn-success"(click)="save()">SAVE SESSION</button>
+            </div>
+        
+            <div class="center" id="replace_alert">
+              <h3 style="color:rgb(32, 32, 32)"> what number do you want to replace?</h3>
+              <input [(ngModel)]="childNo" (keyup.enter)="replaceEntry()"class="form-control" type="number" style="max-width:350px;margin: auto"  placeholder="input number you want to replace"/>
+            </div> 
+          </div>
+          
+        </div>
+      </body>
+      
+</html>

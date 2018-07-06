@@ -1,0 +1,24 @@
+<html>
+    <body>
+    <div>
+        
+        <div class="container-fluid" style="width: 500px; margin: auto;margin-top: 150px">
+            <header class="text-center">
+                <h1>Task Manager</h1>
+            </header>
+          <form ngForm #f=ngForm>
+            <input required ngModel name="userName" minlength ="3" maxlength="15" #userName="ngModel" #username class="form-control" type="text" placeholder="Enter Username" style="box-shadow:none">
+            <div class="alert alert-danger" *ngIf="userName.touched && !userName.valid">
+                <div *ngIf="userName.errors.required">Username is required</div>
+                <div *ngIf="userName.errors.minlength">Username should be minimum of {{userName.errors.minlength.requiredLength}} characters</div>
+            </div>
+            <input class="form-control" type="password" placeholder="Enter password">
+            <a routerLink="/ToDo-list"><button class="btn btn-success btn-block" type="submit" (click)="show(username.value)" [disabled]="!f.valid">submit</button></a>
+          </form>
+        </div>
+        <section style="margin-top: 20px">
+            <p class="text-center" style="color:#495057">Don't have an account? <a style="cursor:pointer;color:#28a745"><b>Sign up</b></a></p>
+        </section>
+      </div>
+    </body>
+</html>
